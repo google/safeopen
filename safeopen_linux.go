@@ -61,7 +61,7 @@ func canTraverseUnixRelPath(path string) (string, bool) {
 
 func openFileAt(directory, file string, flag int, perm os.FileMode) (*os.File, error) {
 	if !unixIsFilename(file) {
-		return nil, &os.PathError{"OpenAt", file, errors.New("invalid filename")}
+		return nil, &os.PathError{Op: "OpenAt", Path: file, Err: errors.New("invalid filename")}
 	}
 
 	return openFileImpl(directory, file, flag, perm, unix.RESOLVE_NO_SYMLINKS)
@@ -70,7 +70,7 @@ func openFileAt(directory, file string, flag int, perm os.FileMode) (*os.File, e
 func openFileBeneath(directory, file string, flag int, perm os.FileMode) (*os.File, error) {
 	file, safe := canTraverseUnixRelPath(file)
 	if !safe {
-		return nil, &os.PathError{"OpenBeneath", file, errors.New("invalid filename")}
+		return nil, &os.PathError{Op: "OpenBeneath", Path: file, Err: errors.New("invalid filename")}
 	}
 
 	return openFileImpl(directory, file, flag, perm, 0)
