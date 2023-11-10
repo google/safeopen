@@ -78,8 +78,8 @@ func OpenBeneath(directory, file string) (*os.File, error) {
 // (before umask). If successful, methods on the returned File can
 // be used for I/O; the associated file descriptor has mode O_RDWR.
 // If there is an error, it will be of type *PathError.
-func CreateBeneath(name, directory string) (*os.File, error) {
-	return OpenFileBeneath(name, directory, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+func CreateBeneath(directory, file string) (*os.File, error) {
+	return OpenFileBeneath(directory, file, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 }
 
 // OpenFileBeneath is the generalized OpenBeneath call; most users will use OpenBeneath
