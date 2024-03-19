@@ -117,10 +117,12 @@ func TestWinSafeopenBeneath(t *testing.T) {
 		{basedir, "safeopensym", "symlink"},
 		{basedir, "safeopensym/safeopentarget", "symlink"},
 		{basedir, `safeopensym\safeopentarget`, "symlink"},
+		{basedir, "\\/127.0.0.1\\C$/Windows///////\\system32/drivers//////\\etc/hosts.......     ", "traversal"},
+		{basedir, `C:..\..\..\path\to\file`, "traversal"},
 	}
 
 	for i, tc := range testCases {
-		t.Run(fmt.Sprintf("TestWinSafeopenAt%d", i), func(t *testing.T) {
+		t.Run(fmt.Sprintf("TestWinSafeopenBeneathAt%d", i), func(t *testing.T) {
 			fd, err := OpenBeneath(tc.basedir, tc.file)
 			if err == nil && fd == nil {
 				t.Errorf("OpenBeneath(%q, %q) did not throw an error, but did not return a file handle", tc.basedir, tc.file)
