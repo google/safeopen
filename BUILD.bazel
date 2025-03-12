@@ -23,7 +23,7 @@ go_library(
         "safeopen_nix_common.go",
         "safeopen_linux.go",
         "safeopen_nix.go",
-        "safeopen_win.go",
+        "safeopen_windows.go",
     ],
     importpath = "github.com/google/safeopen",
     visibility = ["//visibility:public"],
@@ -46,7 +46,7 @@ go_test(
       "safeopen_test.go",
       "safeopen_linux_test.go",
       "safeopen_nix_test.go",
-      "safeopen_win_test.go",
+      "safeopen_windows_test.go",
     ],
     embed = [":safeopen"],
 )

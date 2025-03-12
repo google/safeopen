@@ -13,7 +13,6 @@
 // limitations under the License.
 
 //go:build unix && !linux
-// +build unix,!linux
 
 package safeopen
 
