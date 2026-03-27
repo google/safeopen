@@ -2,6 +2,9 @@
 
 **This is not an officially supported Google product.**
 
+NOTE: Go 1.24 introduced the `os.Root` family of File APIs:
+https://go.dev/blog/osroot and they should be used instead of this library.
+
 Safe-by-construction library with file open/create primitives for Golang that
 are not vulnerable to path traversal attacks. The library supports Unix and
 Windows systems. OS native safe primitives are leveraged where available (e.g.
